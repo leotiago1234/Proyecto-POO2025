@@ -19,6 +19,7 @@ public class GConsultorios extends javax.swing.JFrame {
      */
     public GConsultorios() {
         initComponents();
+        actualizarTabla();
     }
 
     public void actualizarTabla(){
@@ -33,7 +34,9 @@ public class GConsultorios extends javax.swing.JFrame {
             modelo.addRow(new Object[]{
                 c.getCodigo(),
                 c.getEspecialidad(),
-                c.getEstado()
+                c.getEstado(),
+                c.getMedico(),
+                c.getDia()
             });
         }
     }
@@ -159,7 +162,7 @@ public class GConsultorios extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Codigo", "Especialidad", "Estado", "Medico", "Horario"
+                "Codigo", "Especialidad", "Estado", "Medico", "Dia"
             }
         ));
         jScrollPane1.setViewportView(TablaC);
@@ -258,8 +261,7 @@ public class GConsultorios extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Seleccione un usuario");
             return;
         }
-
-        String codigo = TablaC.getValueAt(fila, 3).toString();
+        String codigo = TablaC.getValueAt(fila, 0).toString();
         Consultorio[] lista = Sistema.gestionConsultorio.getConsultorios();
         int n = Sistema.gestionConsultorio.getCount();
 
@@ -279,7 +281,7 @@ public class GConsultorios extends javax.swing.JFrame {
             return;
         }
 
-        String codigo = TablaC.getValueAt(fila, 2).toString();
+        String codigo = TablaC.getValueAt(fila, 0).toString();
 
         Consultorio[] lista = Sistema.gestionConsultorio.getConsultorios();
         int n = Sistema.gestionConsultorio.getCount();

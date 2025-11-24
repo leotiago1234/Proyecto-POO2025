@@ -4,13 +4,11 @@
  */
 package pooprojecto;
 
-import Model.Empleado;
 import Model.Medico;
-import Model.Secundarios.Cita;
 import Model.Secundarios.Consultorio;
 import Model.Usuario;
-import java.time.LocalTime;
-import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -23,9 +21,29 @@ public class RegistrarC extends javax.swing.JFrame {
             
     public RegistrarC(GConsultorios padre, Consultorio consultorio) {
         initComponents();
+        cargarMedicos();
         this.padre = padre;
         consultorioEditado = consultorio;
-
+        
+        if(consultorioEditado != null){
+            cbCodigo.setSelectedItem(consultorio.getCodigo());
+            cbEspecialidad.setSelectedItem(consultorio.getEspecialidad());
+            cbEstado.setSelectedItem(consultorio.getEstado());
+            cbMedico.setSelectedItem(consultorio.getMedico());
+            cbDia.setSelectedItem(consultorio.getDia());       
+        }
+    }
+    
+    private void cargarMedicos() {
+    cbMedico.addItem(null);
+    Usuario[] lista = Sistema.gestionUsuarios.getUsuarios();
+    for (int i = 0; i < Sistema.gestionUsuarios.getNroUsuarios(); i++) {
+        Usuario u = lista[i];
+        if (u != null && u.getEmpleado() instanceof Medico) {
+            Medico m = (Medico) u.getEmpleado();
+            cbMedico.addItem(m);
+        }
+    }
     }
     
     /**
@@ -44,17 +62,17 @@ public class RegistrarC extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtEspecialidad = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtCodigo = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         reCancelar = new javax.swing.JButton();
         reResgistrar = new javax.swing.JButton();
         cbMedico = new javax.swing.JComboBox<>();
-        cbHorario = new javax.swing.JComboBox<>();
+        cbDia = new javax.swing.JComboBox<>();
         cbEstado = new javax.swing.JComboBox<>();
+        cbEspecialidad = new javax.swing.JComboBox<>();
+        cbCodigo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -112,13 +130,6 @@ public class RegistrarC extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Especialidad:");
 
-        txtEspecialidad.setEnabled(false);
-        txtEspecialidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEspecialidadActionPerformed(evt);
-            }
-        });
-
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Estado:");
 
@@ -129,7 +140,7 @@ public class RegistrarC extends javax.swing.JFrame {
         jLabel7.setText("Medico:");
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Horario:");
+        jLabel8.setText("Dia:");
 
         reCancelar.setForeground(new java.awt.Color(0, 102, 153));
         reCancelar.setText("Cancelar");
@@ -147,17 +158,16 @@ public class RegistrarC extends javax.swing.JFrame {
             }
         });
 
-        cbMedico.setEnabled(false);
         cbMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbMedicoActionPerformed(evt);
             }
         });
 
-        cbHorario.setEnabled(false);
-        cbHorario.addActionListener(new java.awt.event.ActionListener() {
+        cbDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado" }));
+        cbDia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbHorarioActionPerformed(evt);
+                cbDiaActionPerformed(evt);
             }
         });
 
@@ -168,33 +178,35 @@ public class RegistrarC extends javax.swing.JFrame {
             }
         });
 
+        cbEspecialidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Pediatria", "Cardiologia", "Ginecologia", "Podologio", "Dermatologia", "Oftalmologia", "Oncologia", "Psiquiatria", "Radiologia", "Medicina general", " " }));
+
+        cbCodigo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "C001", "C002", "C003", "C004", "C005", "C006", "C007", "C008", "C009", "C010" }));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(40, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(reResgistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(41, 41, 41)
                         .addComponent(reCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addGap(102, 102, 102))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtCodigo, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEspecialidad, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbMedico, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbHorario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbEstado, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(102, 102, 102))
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbMedico, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbDia, 0, 325, Short.MAX_VALUE)
+                    .addComponent(cbEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cbEspecialidad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cbCodigo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(35, 35, 35))
         );
         jPanel3Layout.setVerticalGroup(
@@ -205,11 +217,11 @@ public class RegistrarC extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -221,7 +233,7 @@ public class RegistrarC extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbHorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(reResgistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -251,12 +263,56 @@ public class RegistrarC extends javax.swing.JFrame {
     }//GEN-LAST:event_reCancelarActionPerformed
 
     private void reResgistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reResgistrarActionPerformed
+        String codigo = cbCodigo.getSelectedItem().toString();
+        String especialidad = cbEspecialidad.getSelectedItem().toString();
+        String estado = cbEstado.getSelectedItem().toString();
+        Medico medico = (Medico)cbMedico.getSelectedItem();
+        if (medico == null) {
+        }
+        String dia = cbDia.getSelectedItem().toString();
         
+        Consultorio nuevo = new Consultorio(codigo, especialidad, estado, medico, dia);
+        if(consultorioEditado == null){
+            Consultorio[] lista = Sistema.gestionConsultorio.getConsultorios();
+            if(medico != null){
+                for (int i = 0; i < Sistema.gestionConsultorio.getCount(); i++) {
+                    Consultorio c = lista[i];
+                    if (c != null) {
+                        if (c.getDia().equals(dia)) {
+                            if (c.getMedico().getDNI().equals(medico.getDNI())) {
+                            JOptionPane.showMessageDialog(this,"Este médico ya está asignado en este día.");
+                            return;
+                            }
+                        }
+                    }
+                }
+            }
+            for (int i = 0; i < Sistema.gestionConsultorio.getCount(); i++) {
+                Consultorio c = lista[i];
+                if (c != null) {
+                    if (c.getDia().equals(dia)) {
+                        if (c.getCodigo().equals(codigo)) {
+                        JOptionPane.showMessageDialog(this,"Este consultorio ya está ocupado ese día.");
+                        return;
+                        }
+                    }
+                }
+            }
+            Sistema.gestionConsultorio.AgregarConsultorio(nuevo);
+            padre.actualizarTabla();
+        }else{
+            Sistema.gestionConsultorio.ActualizarConsultorio(codigo, nuevo);
+        }
+        JOptionPane.showMessageDialog(this, "Guardado correctamente");
+        if(this.padre != null){
+            padre.actualizarTabla();
+        }
+        this.dispose();
     }//GEN-LAST:event_reResgistrarActionPerformed
 
-    private void cbHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHorarioActionPerformed
+    private void cbDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDiaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbHorarioActionPerformed
+    }//GEN-LAST:event_cbDiaActionPerformed
 
     private void cbMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMedicoActionPerformed
         
@@ -266,16 +322,14 @@ public class RegistrarC extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbEstadoActionPerformed
 
-    private void txtEspecialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEspecialidadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEspecialidadActionPerformed
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cbCodigo;
+    private javax.swing.JComboBox<String> cbDia;
+    private javax.swing.JComboBox<String> cbEspecialidad;
     private javax.swing.JComboBox<String> cbEstado;
-    private javax.swing.JComboBox<String> cbHorario;
-    private javax.swing.JComboBox<String> cbMedico;
+    private javax.swing.JComboBox<Medico> cbMedico;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
@@ -289,7 +343,5 @@ public class RegistrarC extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JButton reCancelar;
     private javax.swing.JButton reResgistrar;
-    private javax.swing.JTextField txtCodigo;
-    private javax.swing.JTextField txtEspecialidad;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,22 +4,49 @@
  */
 package Model.Secundarios;
 
+import Model.Medico;
+
 /**
  *
  * @author Alvaro
  */
 public class Consultorio {
-    private String codigo, especialidad, estado;
+    private String codigo, especialidad, estado, dia;
+    private Medico medico;
     private Cita[] citas;
-    
-     public Consultorio(String codigo, String especialidad, String estado, Cita citas) {
+    private int cantidadCitas;
+
+    public Consultorio(String codigo, String especialidad, String estado, Medico medico, String dia) {
         this.codigo = codigo;
         this.especialidad = especialidad;
-        this.estado = estado; 
-        this.citas = new Cita[20];
+        this.estado = estado;
+        this.dia = dia;
+        this.medico = medico;
+        this.citas = new Cita[16];
+        this.cantidadCitas = 0;
+    }
+    
+    public boolean agregarCita(Cita nueva) {
+        if (cantidadCitas < 16) {
+            citas[cantidadCitas] = nueva;
+            cantidadCitas++;
+            return true;
+        }
+        return false;
     }
 
+    public String getDia() {
+        return dia;
+    }
 
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public int getCantidadCitas() {
+        return cantidadCitas;
+    }
+    
     public String getCodigo() {
         return codigo;
     }

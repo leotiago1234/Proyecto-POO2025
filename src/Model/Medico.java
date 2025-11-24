@@ -16,6 +16,12 @@ public class Medico extends Empleado{
         this.Especialidad = Especialidad;
     }
     
+    @Override
+    public String toString() {
+    return getNombres() + " " + getApellidos() + " - " + Especialidad;
+    }
+
+    
     public String getEspecialidad() {
         return Especialidad;
     }

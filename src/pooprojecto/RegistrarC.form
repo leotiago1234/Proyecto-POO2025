@@ -138,31 +138,27 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace pref="40" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                               <Component id="reResgistrar" min="-2" pref="103" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                               <Component id="reCancelar" min="-2" pref="103" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" alignment="1" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="txtCodigo" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtEspecialidad" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel8" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
-                                  <Component id="cbMedico" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel4" alignment="0" min="-2" pref="94" max="-2" attributes="0"/>
-                                  <Component id="jLabel2" alignment="0" min="-2" pref="161" max="-2" attributes="0"/>
-                                  <Component id="jLabel3" alignment="0" min="-2" pref="119" max="-2" attributes="0"/>
-                                  <Component id="jLabel7" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
-                                  <Component id="cbHorario" alignment="0" min="-2" pref="325" max="-2" attributes="0"/>
-                                  <Component id="cbEstado" alignment="0" max="32767" attributes="0"/>
-                              </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="jLabel8" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
+                          <Component id="cbMedico" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabel4" alignment="0" min="-2" pref="94" max="-2" attributes="0"/>
+                          <Component id="jLabel2" alignment="0" min="-2" pref="161" max="-2" attributes="0"/>
+                          <Component id="jLabel3" alignment="0" min="-2" pref="119" max="-2" attributes="0"/>
+                          <Component id="jLabel7" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
+                          <Component id="cbDia" alignment="0" pref="325" max="32767" attributes="0"/>
+                          <Component id="cbEstado" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cbEspecialidad" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cbCodigo" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
@@ -176,11 +172,11 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtCodigo" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbCodigo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtEspecialidad" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbEspecialidad" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -192,7 +188,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="cbHorario" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbDia" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="reResgistrar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
@@ -223,14 +219,6 @@
                 <Property name="text" type="java.lang.String" value="Especialidad:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtEspecialidad">
-              <Properties>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEspecialidadActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -247,8 +235,6 @@
                 <Property name="text" type="java.lang.String" value="Codigo:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtCodigo">
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -262,7 +248,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Horario:"/>
+                <Property name="text" type="java.lang.String" value="Dia:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="reCancelar">
@@ -292,24 +278,30 @@
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
                 </Property>
-                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbMedicoActionPerformed"/>
               </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Medico&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cbHorario">
+            <Component class="javax.swing.JComboBox" name="cbDia">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="0"/>
+                  <StringArray count="7">
+                    <StringItem index="0" value="-"/>
+                    <StringItem index="1" value="Lunes"/>
+                    <StringItem index="2" value="Martes"/>
+                    <StringItem index="3" value="Miercoles"/>
+                    <StringItem index="4" value="Jueves"/>
+                    <StringItem index="5" value="Viernes"/>
+                    <StringItem index="6" value="Sabado"/>
+                  </StringArray>
                 </Property>
-                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbHorarioActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbDiaActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -328,6 +320,51 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbEstadoActionPerformed"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cbEspecialidad">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="12">
+                    <StringItem index="0" value="-"/>
+                    <StringItem index="1" value="Pediatria"/>
+                    <StringItem index="2" value="Cardiologia"/>
+                    <StringItem index="3" value="Ginecologia"/>
+                    <StringItem index="4" value="Podologio"/>
+                    <StringItem index="5" value="Dermatologia"/>
+                    <StringItem index="6" value="Oftalmologia"/>
+                    <StringItem index="7" value="Oncologia"/>
+                    <StringItem index="8" value="Psiquiatria"/>
+                    <StringItem index="9" value="Radiologia"/>
+                    <StringItem index="10" value="Medicina general"/>
+                    <StringItem index="11" value=" "/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cbCodigo">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="11">
+                    <StringItem index="0" value="-"/>
+                    <StringItem index="1" value="C001"/>
+                    <StringItem index="2" value="C002"/>
+                    <StringItem index="3" value="C003"/>
+                    <StringItem index="4" value="C004"/>
+                    <StringItem index="5" value="C005"/>
+                    <StringItem index="6" value="C006"/>
+                    <StringItem index="7" value="C007"/>
+                    <StringItem index="8" value="C008"/>
+                    <StringItem index="9" value="C009"/>
+                    <StringItem index="10" value="C010"/>
+                  </StringArray>
+                </Property>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>

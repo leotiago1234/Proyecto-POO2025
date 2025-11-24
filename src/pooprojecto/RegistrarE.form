@@ -156,31 +156,29 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtContraseña" alignment="0" min="-2" pref="325" max="-2" attributes="0"/>
-                          <Component id="txtUsuario" alignment="0" min="-2" pref="325" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="txtTelefono" min="-2" pref="325" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel8" alignment="0" min="-2" pref="46" max="-2" attributes="0"/>
-                                  <Component id="txtCorreo" alignment="0" pref="325" max="32767" attributes="0"/>
-                                  <Component id="txtEspecialidad" alignment="0" pref="325" max="32767" attributes="0"/>
-                                  <Component id="jLabel6" alignment="0" min="-2" pref="46" max="-2" attributes="0"/>
-                                  <Component id="jLabel4" alignment="0" min="-2" pref="46" max="-2" attributes="0"/>
-                                  <Component id="txtDNI" alignment="0" pref="325" max="32767" attributes="0"/>
-                                  <Component id="txtApellidos" alignment="0" pref="325" max="32767" attributes="0"/>
-                                  <Component id="txtNombres" max="32767" attributes="0"/>
-                                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel3" alignment="0" min="-2" pref="63" max="-2" attributes="0"/>
-                                  <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cbRol" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="jLabel9" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtContraseña" alignment="0" pref="325" max="32767" attributes="0"/>
+                          <Component id="txtUsuario" alignment="0" pref="325" max="32767" attributes="0"/>
+                          <Component id="txtTelefono" alignment="0" pref="325" max="32767" attributes="0"/>
+                          <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jLabel8" alignment="0" min="-2" pref="46" max="-2" attributes="0"/>
+                              <Component id="txtCorreo" alignment="0" pref="325" max="32767" attributes="0"/>
+                              <Component id="jLabel6" alignment="0" min="-2" pref="46" max="-2" attributes="0"/>
+                              <Component id="jLabel4" alignment="0" min="-2" pref="46" max="-2" attributes="0"/>
+                              <Component id="txtDNI" alignment="0" pref="325" max="32767" attributes="0"/>
+                              <Component id="txtApellidos" alignment="0" pref="325" max="32767" attributes="0"/>
+                              <Component id="txtNombres" max="32767" attributes="0"/>
+                              <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel3" alignment="0" min="-2" pref="63" max="-2" attributes="0"/>
+                              <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbRol" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="jLabel9" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
                           <Component id="jLabel10" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
                           <Component id="jLabel11" alignment="0" min="-2" pref="132" max="-2" attributes="0"/>
+                          <Component id="cbEspecialidad" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="33" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -208,7 +206,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtEspecialidad" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbEspecialidad" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -293,15 +291,6 @@
                 <Property name="text" type="java.lang.String" value="Especialidad:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtEspecialidad">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Solo pueden medicos"/>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEspecialidadActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel8">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -382,6 +371,29 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Constrase&#xf1;a:"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cbEspecialidad">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="11">
+                    <StringItem index="0" value="Pediatria"/>
+                    <StringItem index="1" value="Cardiologia"/>
+                    <StringItem index="2" value="Ginecologia"/>
+                    <StringItem index="3" value="Podologio"/>
+                    <StringItem index="4" value="Dermatologia"/>
+                    <StringItem index="5" value="Oftalmologia"/>
+                    <StringItem index="6" value="Oncologia"/>
+                    <StringItem index="7" value="Psiquiatria"/>
+                    <StringItem index="8" value="Radiologia"/>
+                    <StringItem index="9" value="Medicina general"/>
+                    <StringItem index="10" value=" "/>
+                  </StringArray>
+                </Property>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>

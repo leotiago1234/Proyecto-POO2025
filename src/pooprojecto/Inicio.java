@@ -319,6 +319,11 @@ public class Inicio extends javax.swing.JFrame {
         Roles.add(GestionEmpleados);
 
         GestiónConsultorios.setText("Gestión Consultorios");
+        GestiónConsultorios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GestiónConsultoriosActionPerformed(evt);
+            }
+        });
         Roles.add(GestiónConsultorios);
 
         GestiónPacientes.setText("Gestión Pacientes");
@@ -466,6 +471,13 @@ public class Inicio extends javax.swing.JFrame {
         GPaciente.pack();
         GPaciente.setLocationRelativeTo(null);
     }//GEN-LAST:event_GestiónPacientesActionPerformed
+
+    private void GestiónConsultoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GestiónConsultoriosActionPerformed
+        GConsultorios GConsultorio = new GConsultorios();
+        GConsultorio.setVisible(true);
+        GConsultorio.pack();
+        GConsultorio.setLocationRelativeTo(null);
+    }//GEN-LAST:event_GestiónConsultoriosActionPerformed
 
     /**
      * @param args the command line arguments
