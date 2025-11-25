@@ -11,15 +11,16 @@ import Model.Medico;
  * @author Alvaro
  */
 public class Cita {
-    private String fechaHora, modalidad, estado;
-    private Paciente paciente; 
+    private String diaSemana, hora;
     private Medico medico;
-    private Consultorio consultorio; 
-    
-    public Cita(String fechaHora, String modalidad, String estado, 
-                Paciente paciente, Medico medico, Consultorio consultorio) {
+    private Consultorio consultorio;
+    private Paciente paciente;
+    private String modalidad;         
+    private String estado;               
 
-        this.fechaHora = fechaHora;
+    public Cita(String Dia, String hora, String modalidad, String estado, Paciente paciente, Medico medico, Consultorio consultorio) {
+        this.diaSemana = Dia;
+        this.hora = hora;
         this.modalidad = modalidad;
         this.estado = estado;
         this.paciente = paciente;
@@ -27,59 +28,33 @@ public class Cita {
         this.consultorio = consultorio;
     }
 
-    public Cita(String fechaHora, String modalidad, Paciente paciente,
-                Medico medico, Consultorio consultorio) {
-
-        this.fechaHora = fechaHora;
-        this.modalidad = modalidad;
-        this.paciente = paciente;
-        this.medico = medico;
-        this.consultorio = consultorio;
-
-        this.estado = "Programada";
+    public String getDia() {
+        return diaSemana;
     }
 
-
-    public String getFechaHora() { 
-        return fechaHora; 
+    public String getHora() {
+        return hora;
     }
-    
+
     public String getModalidad() {
-        
-        return modalidad; 
-    }
-    public String getEstado() {
-        return estado; 
-    }
-    
-    public Paciente getPaciente() {
-        return paciente; 
-    }
-    
-    public Medico getMedico() { 
-        return medico; 
-    }
-    
-    public Consultorio getConsultorio() {
-        return consultorio; 
+        return modalidad;
     }
 
-    public void confirmar()     
-    { this.estado = "Confirmada"; }
-    public void cancelar()      {
-        this.estado = "Cancelada"; 
+    public String getEstado() {
+        return estado;
     }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public Consultorio getConsultorio() {
+        return consultorio;
+    }
+
     
-    public void marcarEnSala()  {
-        this.estado = "En sala";
-    }
-    
-    public void marcarAtendida(){
-        this.estado = "Atendida"; 
-    }
-    
-    public void marcarNoShow()  {
-        
-        this.estado = "No show"; 
-    }
 }

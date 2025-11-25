@@ -4,9 +4,7 @@
  */
 package Controller;
 
-import Model.Medico;
 import Model.Secundarios.Cita;
-import Model.Secundarios.Consultorio;
 import Model.Secundarios.Paciente;
 
 /**
@@ -23,7 +21,7 @@ public class GestionCita {
         count = 0;
     }
 
-     public boolean agregarCita(Cita c) {
+     public boolean AgregarCita(Cita c) {
         if (count < citas.length) {
             citas[count++] = c;
             return true;
@@ -31,48 +29,37 @@ public class GestionCita {
         return false;
     }
 
-    public Cita buscarCita(String dniPaciente, String fechaHora) {
+    public boolean ActualizarCita(Paciente paciente, Cita actualizada) {
         for (int i = 0; i < count; i++) {
-            Cita c = citas[i];
-            if (c.getPaciente().getDni().equals(dniPaciente) &&
-                c.getFechaHora().equals(fechaHora)) {
-                return c;
+            if (citas[i].getPaciente() == paciente) {
+                citas[i] = actualizada;
+                return true;
             }
-        }
-        return null;
-    }
-
-    public boolean cancelarCita(String dniPaciente, String fechaHora) {
-        Cita c = buscarCita(dniPaciente, fechaHora);
-        if (c != null) {
-            c.cancelar();
-            return true;
         }
         return false;
     }
-    
-    public Cita[] listarCitas() {
+
+    public boolean EliminarCita(Paciente paciente) {
+        for (int i = 0; i < count; i++) {
+            if (citas[i].getPaciente() == paciente) {
+                for (int j = i; j < count - 1; j++) {
+                    citas[j] = citas[j + 1];
+                }
+                citas[count - 1] = null;
+                count--;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Cita[] getCitas() {
         return citas;
     }
 
-    public boolean validarDisponibilidad(Medico medico, Consultorio consultorio, String fechaHora) {
-
-        for (int i = 0; i < count; i++) {
-            Cita c = citas[i];
-
-            if (c.getMedico().equals(medico) &&
-                c.getFechaHora().equals(fechaHora) &&
-                !c.getEstado().equals("Cancelada")) {
-                return false;
-            }
-
-            if (c.getConsultorio().equals(consultorio) &&
-                c.getFechaHora().equals(fechaHora) &&
-                !c.getEstado().equals("Cancelada")) {
-                return false;
-            }
-        }
-
-        return true;
+    public int getCount() {
+        return count;
     }
-}
+    
+}    
+

@@ -6,6 +6,7 @@ package pooprojecto;
 
 import Model.Medico;
 import Model.Usuario;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 
 /**
@@ -399,7 +400,10 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AgendaycitasmedicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgendaycitasmedicasActionPerformed
-        // TODO add your handling code here:
+        GCitas GCitas = new GCitas();
+        GCitas.setVisible(true);
+        GCitas.pack();
+        GCitas.setLocationRelativeTo(null);
     }//GEN-LAST:event_AgendaycitasmedicasActionPerformed
 
     private void TipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TipoActionPerformed

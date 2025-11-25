@@ -45,7 +45,6 @@ public class GestionPacientes {
 
             if (pacientes[i].getDni().equals(dni)) {
 
-                // Mover los demás hacia arriba
                 for (int j = i; j < count - 1; j++) {
                     pacientes[j] = pacientes[j + 1];
                 }

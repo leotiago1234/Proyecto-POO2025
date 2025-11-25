@@ -20,6 +20,11 @@ public class Paciente {
         this.telefono = telefono;
         this.contactoEmergancia = contactoEmergancia;
     }
+    
+    @Override
+    public String toString() {
+    return getNombres() + " - " + getDni();
+    }
 
     public String getDni() {
         return dni;

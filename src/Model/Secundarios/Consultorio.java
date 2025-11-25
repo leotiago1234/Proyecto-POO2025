@@ -26,13 +26,9 @@ public class Consultorio {
         this.cantidadCitas = 0;
     }
     
-    public boolean agregarCita(Cita nueva) {
-        if (cantidadCitas < 16) {
-            citas[cantidadCitas] = nueva;
-            cantidadCitas++;
-            return true;
-        }
-        return false;
+    @Override
+    public String toString() {
+    return getCodigo() + " - " + getEstado() + " por: "+ getMedico() + " - " + getDia();
     }
 
     public String getDia() {
@@ -45,6 +41,10 @@ public class Consultorio {
 
     public int getCantidadCitas() {
         return cantidadCitas;
+    }
+
+    public void setCantidadCitas(int cantidadCitas) {
+        this.cantidadCitas = cantidadCitas;
     }
     
     public String getCodigo() {
