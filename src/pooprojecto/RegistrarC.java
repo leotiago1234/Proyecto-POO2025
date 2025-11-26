@@ -175,7 +175,7 @@ public class RegistrarC extends javax.swing.JFrame {
             }
         });
 
-        cbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponible", "Ocupado", "Mantenimiento" }));
+        cbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ocupado", "Disponible", "Mantenimiento" }));
         cbEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbEstadoActionPerformed(evt);
