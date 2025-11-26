@@ -24,29 +24,29 @@ public class GCitas extends javax.swing.JFrame {
         actualizarTabla();
     }
 
-    public void actualizarTabla(){
-        DefaultTableModel modelo = (DefaultTableModel) TablaC.getModel();
-        modelo.setRowCount(0);
+    public void actualizarTabla() {
+        DefaultTableModel model = (DefaultTableModel) TablaC.getModel();
+        model.setRowCount(0);
 
         Cita[] lista = Sistema.gestionCita.getCitas();
-        int n = Sistema.gestionConsultorio.getCount();
+        int nro = Sistema.gestionCita.getCount();
 
-        for(int i = 0; i < n; i++){
+        for (int i = 0; i < nro; i++) {
             Cita c = lista[i];
-            if (c == null) {
-                continue; // ← evita el NullPointerException
+            if (c != null) {
+                model.addRow(new Object[]{
+                    c.getDia(),
+                    c.getHora(),
+                    c.getMedico(),
+                    c.getConsultorio(),
+                    c.getModalidad(),
+                    c.getPaciente(),
+                    c.getEstado()
+                });
             }
-            modelo.addRow(new Object[]{
-                c.getDia(),
-                c.getHora(),
-                c.getMedico(),
-                c.getConsultorio(),
-                c.getModalidad(),
-                c.getPaciente(),
-                c.getEstado()
-            });
         }
     }
+
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -274,7 +274,7 @@ public class GCitas extends javax.swing.JFrame {
         int n = Sistema.gestionConsultorio.getCount();
 
         for(int i = 0; i < n; i++){
-            if(lista[i].getPaciente() == paciente){
+            if(lista[i].getPaciente().equals(paciente)){
                 Sistema.gestionCita.EliminarCita(paciente);
                 Sistema.gestionConsultorio.EliminarCitaConsultorio(consultorio, lista[i]);
                 actualizarTabla();
@@ -290,14 +290,13 @@ public class GCitas extends javax.swing.JFrame {
             return;
         }
 
-        String Dia = TablaC.getValueAt(fila, 0).toString();
-        String Hora = TablaC.getValueAt(fila, 1).toString();
+        Paciente paciente = (Paciente)TablaC.getValueAt(fila, 5);
 
         Cita[] lista = Sistema.gestionCita.getCitas();
         int n = Sistema.gestionCita.getCount();
 
         for(int i = 0; i < n; i++){
-            if(lista[i].getDia().equals(Dia) && lista[i].getHora().equals(Hora)){
+            if(lista[i].getPaciente().equals(paciente)){
                 RegistrarCi r = new RegistrarCi(this,lista[i]);
                 r.setVisible(true);
                 r.pack();

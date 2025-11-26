@@ -31,7 +31,7 @@ public class GestionCita {
 
     public boolean ActualizarCita(Paciente paciente, Cita actualizada) {
         for (int i = 0; i < count; i++) {
-            if (citas[i].getPaciente() == paciente) {
+            if (citas[i].getPaciente().equals(paciente)) {
                 citas[i] = actualizada;
                 return true;
             }
@@ -41,7 +41,7 @@ public class GestionCita {
 
     public boolean EliminarCita(Paciente paciente) {
         for (int i = 0; i < count; i++) {
-            if (citas[i].getPaciente() == paciente) {
+            if (citas[i].getPaciente().equals(paciente)) {
                 for (int j = i; j < count - 1; j++) {
                     citas[j] = citas[j + 1];
                 }
