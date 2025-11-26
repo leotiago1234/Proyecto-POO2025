@@ -67,6 +67,47 @@ public class Factura {
 
         this.montoTotal = total;
     }
+    
+    public void recalcular() {
+    calcularMontoTotal();
+    }
+    
+    @Override
+    public String toString() {
+    return "Factura " + numeroFactura + " - " + paciente.getNombres() + 
+           " (" + estado + ")";
+    }
+    
+    public String generarRecibo() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("------- RECIBO -------\n");
+    sb.append("Factura: ").append(numeroFactura).append("\n");
+    sb.append("Fecha: ").append(fecha).append("\n");
+    sb.append("Paciente: ").append(paciente.getNombres()).append("\n");
+    sb.append("Método de pago: ").append(metodoPago).append("\n");
+    sb.append("Estado: ").append(estado).append("\n\n");
+
+    sb.append("DETALLES:\n");
+
+    if (consulta != null) {
+        sb.append("- Consulta: S/ ").append(consulta.getPrecio()).append("\n");
+    }
+
+    if (consulta != null && consulta.getOrdenes() != null) {
+        for (Orden o : consulta.getOrdenes()) {
+            if (o != null) {
+                sb.append("- Orden: ").append(o.getTipo())
+                  .append("  S/ ").append(o.getPrecio()).append("\n");
+            }
+        }
+    }
+
+    sb.append("\nTOTAL: S/ ").append(montoTotal);
+    sb.append("\n-----------------------\n");
+
+    return sb.toString();
+    }
+
 
     public void pagar() {
         this.estado = "Pagada";

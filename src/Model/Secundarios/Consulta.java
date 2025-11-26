@@ -5,16 +5,23 @@
 package Model.Secundarios;
 
 import Model.Medico;
-import Model.Secundarios.Orden;
-/**
- *
- * @author leonardorodriguez
- */
+
 public class Consulta {
-    private String motivo, estado, antecedentes, signosVitales, examenFisico, diagnostico, plan;
+
+    private String tipoConsulta;
+
+    private String motivo;
+    private String estado;
+    private String antecedentes;
+    private String signosVitales;
+    private String examenFisico;
+    private String diagnostico;
+    private String plan;
+
     private double precio;
 
     private Receta receta;
+
     private Orden[] ordenes;
     private int countOrdenes;
 
@@ -24,18 +31,23 @@ public class Consulta {
     private Medico medico;
     private Cita cita;
 
-    public Consulta(String motivo, String antecedentes,
+    public Consulta(String tipoConsulta,
+                    String motivo, String antecedentes,
                     String signosVitales, String examenFisico,
                     String diagnostico, String plan,
+                    double precio,
                     String fechaHora,
                     Paciente paciente, Medico medico, Cita cita) {
 
+        this.tipoConsulta = tipoConsulta;
         this.motivo = motivo;
         this.antecedentes = antecedentes;
         this.signosVitales = signosVitales;
         this.examenFisico = examenFisico;
         this.diagnostico = diagnostico;
         this.plan = plan;
+
+        this.precio = precio;
         this.fechaHora = fechaHora;
 
         this.paciente = paciente;
@@ -49,74 +61,87 @@ public class Consulta {
     }
 
 
-    public String getMotivo() { 
-        return motivo; 
+    public String getTipoConsulta() {
+        return tipoConsulta;
     }
-    
+
+    public String getMotivo() {
+        return motivo;
+    }
+
     public String getAntecedentes() {
-        return antecedentes; 
+        return antecedentes;
     }
-    
+
     public String getSignosVitales() {
-        return signosVitales; 
+        return signosVitales;
     }
-    
+
     public String getExamenFisico() {
-        return examenFisico; 
+        return examenFisico;
     }
-    
+
     public String getDiagnostico() {
-        return diagnostico; 
+        return diagnostico;
     }
-    
+
     public String getPlan() {
-        return plan; 
+        return plan;
     }
-    
+
     public String getFechaHora() {
-        return fechaHora; 
+        return fechaHora;
     }
-    
+
     public String getEstado() {
-        return estado; 
+        return estado;
     }
-    
+
     public Paciente getPaciente() {
-        return paciente; 
+        return paciente;
     }
-    
+
     public Medico getMedico() {
-        return medico; 
+        return medico;
     }
-    
+
     public Cita getCita() {
-        return cita; 
+        return cita;
     }
-    
+
     public Receta getReceta() {
-        return receta; 
+        return receta;
     }
-    
-    public Orden[] getOrdenes() { 
-        return ordenes; 
+
+    public Orden[] getOrdenes() {
+        return ordenes;
     }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
 
     public void agregarDiagnostico(String d) { 
         this.diagnostico = d; 
     }
-    
+
     public void agregarPlan(String p) {
-        this.plan = p; 
+        this.plan = p;
     }
-    
+
     public void agregarSignosVitales(String sv) {
         this.signosVitales = sv;
     }
-    
-    public void agregarExamenFisico(String ef) { 
-        
-        this.examenFisico = ef; 
+
+    public void agregarExamenFisico(String ef) {
+        this.examenFisico = ef;
     }
+
 
     public boolean agregarOrden(Orden o) {
         if (countOrdenes < ordenes.length) {
@@ -130,15 +155,18 @@ public class Consulta {
         this.receta = r;
     }
 
+
     public void cerrar() {
         this.estado = "Cerrada";
     }
-    
-    public double getPrecio() {
-    return precio;
-    }
 
-    public void setPrecio(double precio) {
-    this.precio = precio;
+
+    @Override
+    public String toString() {
+        return tipoConsulta + " | " +
+               paciente.getNombres() + " | " +
+               fechaHora + " | S/ " + precio;
     }
 }
+
+

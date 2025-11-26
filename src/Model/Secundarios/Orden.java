@@ -9,13 +9,14 @@ package Model.Secundarios;
  * @author Alvaro
  */
 public class Orden {
-    private String nombre, descripcion;
+    private String nombre, descripcion,tipo;
     private double precio;
 
-    public Orden(String nombre, String descripcion, double Precio) {
+    public Orden(String nombre, String descripcion, double Precio, String tipo) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = Precio;
+        this.tipo= tipo;
     }
 
     public String getNombre() {
@@ -41,6 +42,16 @@ public class Orden {
     public void setPrecio(double Precio) {
         this.precio = Precio;
     }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    
+    
     
     
 }
