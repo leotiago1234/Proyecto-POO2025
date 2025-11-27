@@ -18,6 +18,15 @@ public class GestionFactura {
         facturas = new Factura[200];
         count = 0;
     }
+    
+    public Factura buscarFactura(String numeroFactura) {
+    for (int i = 0; i < count; i++) {
+        if (facturas[i].getNumeroFactura().equals(numeroFactura)) {
+            return facturas[i];
+        }
+    }
+    return null;
+    }
 
     public boolean agregarFactura(Factura f) {
         if (count < facturas.length) {

@@ -51,7 +51,16 @@ public class GestionPacientes {
         }
         return false;
     }
-
+    
+    public Paciente buscarPaciente(String dni) {
+    for (int i = 0; i < count; i++) {
+        if (pacientes[i] != null && pacientes[i].getDni().equals(dni)) {
+            return pacientes[i];
+        }
+    }
+    return null;
+    }
+    
     public Paciente[] getPacientes() {
         return pacientes;
     }

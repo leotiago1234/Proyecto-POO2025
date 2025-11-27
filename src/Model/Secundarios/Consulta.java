@@ -16,7 +16,7 @@ public class Consulta {
     private String signosVitales;
     private String examenFisico;
     private String diagnostico;
-    private String plan;
+    private String plan,codigo;
 
     private double precio;
 
@@ -30,6 +30,7 @@ public class Consulta {
     private Paciente paciente;
     private Medico medico;
     private Cita cita;
+    
 
     public Consulta(String tipoConsulta,
                     String motivo, String antecedentes,
@@ -167,6 +168,24 @@ public class Consulta {
                paciente.getNombres() + " | " +
                fechaHora + " | S/ " + precio;
     }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public int getCountOrdenes() {
+        return countOrdenes;
+    }
+
+    public void setCountOrdenes(int countOrdenes) {
+        this.countOrdenes = countOrdenes;
+    }
+    
+    
 }
 
 

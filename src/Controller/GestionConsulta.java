@@ -92,7 +92,16 @@ public class GestionConsulta {
         }
         return false;
     }
-
+    
+    public Consulta buscarConsulta(String codConsulta) {
+    for (int i = 0; i < count; i++) {
+        if (consultas[i] != null && consultas[i].getCodigo().equals(codConsulta)) {
+            return consultas[i];
+        }
+    }
+    return null;
+    }
+    
     public Consulta[] listarConsultas() {
         return consultas;
     }
