@@ -32,8 +32,7 @@ public class RegistrarCi extends javax.swing.JFrame {
             cbMedico.setSelectedItem(cita.getMedico());
             cbConsultorio.setSelectedItem(cita.getConsultorio());
             cbModalidad.setSelectedItem(cita.getModalidad());
-            cbPaciente.setSelectedItem(cita.getPaciente());
-            cbEstado.setSelectedItem(cita.getEstado());               
+            cbPaciente.setSelectedItem(cita.getPaciente());           
         }
     }
 
@@ -81,12 +80,10 @@ public class RegistrarCi extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         reCancelar = new javax.swing.JButton();
         reResgistrar = new javax.swing.JButton();
         cbMedico = new javax.swing.JComboBox<>();
         cbDia = new javax.swing.JComboBox<>();
-        cbEstado = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         cbHora = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
@@ -160,9 +157,6 @@ public class RegistrarCi extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Medico:");
 
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Estado:");
-
         reCancelar.setForeground(new java.awt.Color(0, 102, 153));
         reCancelar.setText("Cancelar");
         reCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -189,13 +183,6 @@ public class RegistrarCi extends javax.swing.JFrame {
         cbDia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbDiaActionPerformed(evt);
-            }
-        });
-
-        cbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Programada", "Confirmada", "En sala", "Atendida", "Cancelada", "No show", " " }));
-        cbEstado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbEstadoActionPerformed(evt);
             }
         });
 
@@ -235,40 +222,37 @@ public class RegistrarCi extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(57, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cbPaciente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cbModalidad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cbConsultorio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cbMedico, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cbHora, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cbDia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(150, 150, 150)
-                                .addComponent(jLabel1)))
-                        .addGap(37, 37, 37))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbPaciente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cbModalidad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cbConsultorio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cbMedico, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cbHora, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cbDia, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(83, 83, 83)
                         .addComponent(reResgistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(41, 41, 41)
                         .addComponent(reCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(133, 133, 133))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(35, 35, 35))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(68, 68, 68)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
@@ -294,15 +278,11 @@ public class RegistrarCi extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(reResgistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(reCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel3);
@@ -338,61 +318,43 @@ public class RegistrarCi extends javax.swing.JFrame {
         }
         Paciente paciente = (Paciente)cbPaciente.getSelectedItem(); 
         if (paciente == null) {
-        }
-        String estado = cbEstado.getSelectedItem().toString();
-        
-        Cita nuevo = new Cita(dia, hora, modalidad, estado, paciente, medico, consultorio);
-        if(citaEditada == null){
-            Cita[] lista = Sistema.gestionCita.getCitas();
-            if(paciente != null){
-                for (int i = 0; i < Sistema.gestionCita.getCount(); i++) {
-                    Cita c = lista[i];
-                    if (c != null) {
-                        if (c.getHora().equals(hora)) {
-                            if (c.getMedico().getDNI().equals(medico.getDNI())) {
-                                JOptionPane.showMessageDialog(this,"Este medico ya está asignado en este hora");
-                                return;
-                            }
-                        }
-                    }
+        }       
+        Cita nueva = new Cita(dia, hora, modalidad, paciente, medico, consultorio);
+        Cita[] lista = Sistema.gestionCita.getCitas();
+        int total = Sistema.gestionCita.getCount();
+
+        for (int i = 0; i < total; i++) {
+            Cita c = lista[i];
+            if (c == null) continue;
+            if (c.getHora().equals(hora)) {
+                if (c.getMedico().getDNI().equals(medico.getDNI())) {
+                    JOptionPane.showMessageDialog(this, "El médico ya tiene cita en esta hora");
+                    return;
+                }
+                if (c.getConsultorio().getCodigo().equals(consultorio.getCodigo())) {
+                    JOptionPane.showMessageDialog(this, "El consultorio ya tiene una cita en esta hora");
+                    return;
+                }
+                if (c.getPaciente().getDni().equals(paciente.getDni())) {
+                    JOptionPane.showMessageDialog(this, "El paciente ya tiene una cita en esta hora");
+                    return;
                 }
             }
-            if(consultorio != null){
-                for (int i = 0; i < Sistema.gestionCita.getCount(); i++) {
-                    Cita c = lista[i];
-                    if (c != null) {
-                        if (c.getHora().equals(hora)) {
-                            if (c.getConsultorio().getCodigo().equals(consultorio.getCodigo())) {
-                                JOptionPane.showMessageDialog(this,"Este consultorio ya está asignado en esta hora");
-                                return;
-                            }
-                        }
-                    }
-                }
-            }
-            if(paciente != null){
-                for (int i = 0; i < Sistema.gestionCita.getCount(); i++) {
-                    Cita c = lista[i];
-                    if (c != null) {
-                        if (c.getHora().equals(hora)) {
-                            if (c.getPaciente().getDni().equals(paciente.getDni())) {
-                                JOptionPane.showMessageDialog(this,"Este paciente ya está asignado en esta hora");
-                                return;
-                            }
-                        }
-                    }
-                }
-            }
-            Sistema.gestionCita.AgregarCita(nuevo);
-            Sistema.gestionConsultorio.AgregarCitaConsultorio(consultorio, nuevo);
-        }else{
-            Sistema.gestionCita.ActualizarCita(paciente, nuevo);  
-            Sistema.gestionConsultorio.ActualizarCita(consultorio, nuevo);
         }
-        JOptionPane.showMessageDialog(this, "Guardado correctamente");
-        if(this.padre != null){
-            padre.actualizarTabla();
+
+        if (citaEditada == null) {
+            Sistema.gestionCita.AgregarCita(nueva);
+            Sistema.gestionCita.AgregarCitaConsultorio(consultorio, nueva);
+            Sistema.gestionAgendaMedica.agregarCita(nueva);
+        } else {
+            Sistema.gestionCita.ActualizarCita(paciente, nueva);
+            Sistema.gestionCita.ActualizarCitaConsultorio(consultorio, nueva);
+            Sistema.gestionAgendaMedica.actualizarCita(nueva);
         }
+        JOptionPane.showMessageDialog(this, "Guardado correctamente."
+                + "\nTotal citas: " + Sistema.gestionCita.getCount());
+        if (padre != null) padre.actualizarTabla();
+
         this.dispose();
     }//GEN-LAST:event_reResgistrarActionPerformed
 
@@ -403,10 +365,6 @@ public class RegistrarCi extends javax.swing.JFrame {
     private void cbDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDiaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbDiaActionPerformed
-
-    private void cbEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEstadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbEstadoActionPerformed
 
     private void cbHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHoraActionPerformed
         // TODO add your handling code here:
@@ -428,7 +386,6 @@ public class RegistrarCi extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<Consultorio> cbConsultorio;
     private javax.swing.JComboBox<String> cbDia;
-    private javax.swing.JComboBox<String> cbEstado;
     private javax.swing.JComboBox<String> cbHora;
     private javax.swing.JComboBox<Medico> cbMedico;
     private javax.swing.JComboBox<String> cbModalidad;
@@ -441,7 +398,6 @@ public class RegistrarCi extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

@@ -4,6 +4,7 @@
  */
 package pooprojecto;
 
+import Controller.GestionAgendaMedica;
 import Controller.GestionCita;
 import Controller.GestionFactura;
 import Controller.GestionUsuarios;
@@ -23,6 +24,8 @@ public class Sistema {
     static GestionConsulta gestionConsulta;
     static GestionConsultorio gestionConsultorio;
     static GestionPacientes gestionPacientes;
+    static GestionAgendaMedica gestionAgendaMedica;
+
     
     static void InicializarVariables(){
         gestionUsuarios = new GestionUsuarios();
@@ -30,7 +33,8 @@ public class Sistema {
         gestionCita = new GestionCita();
         gestionConsulta = new GestionConsulta();
         gestionConsultorio = new GestionConsultorio();
-        gestionPacientes= new GestionPacientes();
+        gestionPacientes = new GestionPacientes();
+        gestionAgendaMedica = new GestionAgendaMedica();
     }
     private Usuario[] Usuarios;
     private int nroUsuarios;
@@ -63,7 +67,5 @@ public class Sistema {
 
     public static GestionPacientes getGestionPacientes() {
         return gestionPacientes;
-    }
-
-    
+    }  
 }

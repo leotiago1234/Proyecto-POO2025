@@ -31,7 +31,6 @@ public class GestionPacientes {
     public boolean ActualizarPaciente(String dni, Paciente actualizado) {
         for (int i = 0; i < count; i++) {
             if (pacientes[i].getDni().equals(dni)) {
-
                 pacientes[i] = actualizado; 
                 return true;
             }
@@ -40,18 +39,13 @@ public class GestionPacientes {
     }
 
     public boolean EliminarPaciente(String dni) {
-
         for (int i = 0; i < count; i++) {
-
-            if (pacientes[i].getDni().equals(dni)) {
-
+            if (pacientes[i] != null && pacientes[i].getDni().equals(dni)) {
                 for (int j = i; j < count - 1; j++) {
                     pacientes[j] = pacientes[j + 1];
                 }
-
                 pacientes[count - 1] = null;
                 count--;
-
                 return true;
             }
         }

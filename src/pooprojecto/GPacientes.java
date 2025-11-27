@@ -236,31 +236,27 @@ public class GPacientes extends javax.swing.JFrame {
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
         int fila = TablaP.getSelectedRow();
         if(fila == -1){
-            JOptionPane.showMessageDialog(this, "Seleccione un usuario");
+            JOptionPane.showMessageDialog(this, "Seleccione un paciente");
+            return;
+        }
+        String dni = TablaP.getValueAt(fila, 0).toString();
+        boolean eliminado = Sistema.gestionPacientes.EliminarPaciente(dni);
+        if(eliminado){
+            actualizarTabla();
+            int cantidad = Sistema.gestionPacientes.getCount();
+                JOptionPane.showMessageDialog(this, "Paciente eliminado correctamente.\nPacientes restantes en el sistema: " + cantidad);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se pudo eliminar el paciente. Verifique los datos.");
+        }
+    }//GEN-LAST:event_EliminarActionPerformed
+    private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
+        int fila = TablaP.getSelectedRow();
+        if(fila == -1){
+            JOptionPane.showMessageDialog(this, "Seleccione un paciente");
             return;
         }
 
         String DNI = TablaP.getValueAt(fila, 0).toString();
-        Paciente[] lista = Sistema.gestionPacientes.getPacientes();
-        int n = Sistema.gestionPacientes.getCount();
-
-        for(int i = 0; i < n; i++){
-            if(lista[i].getDni().equals(DNI)){
-                Sistema.gestionPacientes.EliminarPaciente(lista[i].getDni());
-                actualizarTabla();
-                return;
-            }
-        }
-    }//GEN-LAST:event_EliminarActionPerformed
-
-    private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
-        int fila = TablaP.getSelectedRow();
-        if(fila == -1){
-            JOptionPane.showMessageDialog(this, "Seleccione un usuario");
-            return;
-        }
-
-        String DNI = TablaP.getValueAt(fila, 2).toString();
 
         Paciente[] lista = Sistema.gestionPacientes.getPacientes();
         int n = Sistema.gestionPacientes.getCount();

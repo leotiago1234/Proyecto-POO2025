@@ -7,6 +7,7 @@ package pooprojecto;
 import Model.Secundarios.Cita;
 import Model.Secundarios.Consultorio;
 import Model.Secundarios.Paciente;
+import Model.Medico;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,22 +17,20 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GCitas extends javax.swing.JFrame {
 
-    /**
-     * Creates new form GCitas
-     */
     public GCitas() {
         initComponents();
         actualizarTabla();
     }
 
     public void actualizarTabla() {
+
         DefaultTableModel model = (DefaultTableModel) TablaC.getModel();
         model.setRowCount(0);
 
         Cita[] lista = Sistema.gestionCita.getCitas();
-        int nro = Sistema.gestionCita.getCount();
+        int total = Sistema.gestionCita.getCount();
 
-        for (int i = 0; i < nro; i++) {
+        for (int i = 0; i < total; i++) {
             Cita c = lista[i];
             if (c != null) {
                 model.addRow(new Object[]{
@@ -46,7 +45,6 @@ public class GCitas extends javax.swing.JFrame {
             }
         }
     }
-
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -243,19 +241,26 @@ public class GCitas extends javax.swing.JFrame {
 
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
         int fila = TablaC.getSelectedRow();
-        if(fila == -1){
-            JOptionPane.showMessageDialog(this, "Seleccione un usuario");
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this, "Seleccione una cita");
             return;
         }
-        Paciente paciente = (Paciente)TablaC.getValueAt(fila, 5);
-        Consultorio consultorio = (Consultorio)TablaC.getValueAt(fila, 3);
-        Cita[] lista = Sistema.gestionCita.getCitas();
-        int n = Sistema.gestionConsultorio.getCount();
 
-        for(int i = 0; i < n; i++){
-            if(lista[i].getPaciente().equals(paciente)){
-                Sistema.gestionCita.EliminarCita(paciente);
-                Sistema.gestionConsultorio.EliminarCitaConsultorio(consultorio, lista[i]);
+        Paciente paciente = (Paciente) TablaC.getValueAt(fila, 5);
+        Consultorio consultorio = (Consultorio) TablaC.getValueAt(fila, 3);
+        Medico medico = (Medico) TablaC.getValueAt(fila, 2);
+
+        Cita[] lista = Sistema.gestionCita.getCitas();
+        int n = Sistema.gestionCita.getCount();
+
+        for (int i = 0; i < n; i++) {
+            Cita c = lista[i];
+
+            if (c != null && c.getPaciente().equals(paciente)) {
+                Sistema.gestionCita.EliminarCita(c);
+                Sistema.gestionCita.EliminarCitaConsultorio(consultorio, c);
+                Sistema.gestionAgendaMedica.eliminarCita(medico, paciente);
+                JOptionPane.showMessageDialog(this,"Cita eliminada correctamente." +"\nActual total: " + Sistema.gestionCita.getCount());
                 actualizarTabla();
                 return;
             }
@@ -264,19 +269,20 @@ public class GCitas extends javax.swing.JFrame {
 
     private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
         int fila = TablaC.getSelectedRow();
-        if(fila == -1){
-            JOptionPane.showMessageDialog(this, "Seleccione un usuario");
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this, "Seleccione una cita");
             return;
         }
 
-        Paciente paciente = (Paciente)TablaC.getValueAt(fila, 5);
+        Paciente paciente = (Paciente) TablaC.getValueAt(fila, 5);
 
         Cita[] lista = Sistema.gestionCita.getCitas();
         int n = Sistema.gestionCita.getCount();
 
-        for(int i = 0; i < n; i++){
-            if(lista[i].getPaciente().equals(paciente)){
-                RegistrarCi r = new RegistrarCi(this,lista[i]);
+        for (int i = 0; i < n; i++) {
+            if (lista[i] != null && lista[i].getPaciente().equals(paciente)) {
+
+                RegistrarCi r = new RegistrarCi(this, lista[i]);
                 r.setVisible(true);
                 r.pack();
                 r.setLocationRelativeTo(null);

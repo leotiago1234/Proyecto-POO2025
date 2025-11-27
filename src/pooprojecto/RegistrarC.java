@@ -274,13 +274,10 @@ public class RegistrarC extends javax.swing.JFrame {
         }
         String estado = cbEstado.getSelectedItem().toString();
         Medico medico = (Medico)cbMedico.getSelectedItem();
-        if (medico == null) {
-        }
         String dia = null;
         if (cbDia.getSelectedItem() != null) {
             dia = cbDia.getSelectedItem().toString();
         }
-        
         Consultorio nuevo = new Consultorio(codigo, especialidad, estado, medico, dia);
         if(consultorioEditado == null){
             Consultorio[] lista = Sistema.gestionConsultorio.getConsultorios();
@@ -290,31 +287,40 @@ public class RegistrarC extends javax.swing.JFrame {
                     if (c != null) {
                         if (c.getDia().equals(dia)) {
                             if (c.getMedico().getDNI().equals(medico.getDNI())) {
-                            JOptionPane.showMessageDialog(this,"Este médico ya está asignado en este día");
-                            return;
+                                JOptionPane.showMessageDialog(this,"Este médico ya está asignado en este día");
+                                return;
                             }
                         }
                     }
                 }
             }
+
             for (int i = 0; i < Sistema.gestionConsultorio.getCount(); i++) {
                 Consultorio c = lista[i];
                 if (c != null) {
                     if (c.getDia().equals(dia)) {
                         if (c.getCodigo().equals(codigo)) {
-                        JOptionPane.showMessageDialog(this,"Este consultorio ya está ocupado ese día");
-                        return;
+                            JOptionPane.showMessageDialog(this,"Este consultorio ya está ocupado ese día");
+                            return;
                         }
                     }
                 }
             }
+
             Sistema.gestionConsultorio.AgregarConsultorio(nuevo);
             padre.actualizarTabla();
         }else{
             Sistema.gestionConsultorio.ActualizarConsultorio(codigo, nuevo);
         }
-        JOptionPane.showMessageDialog(this, "Guardado correctamente");
-        if(this.padre != null){
+        int total = Sistema.gestionConsultorio.getCount();
+        if (consultorioEditado == null) {
+            JOptionPane.showMessageDialog(this, 
+                "Consultorio agregado correctamente.\nTotal consultorios: " + total);
+        } else {
+            JOptionPane.showMessageDialog(this, 
+                "Consultorio modificado correctamente.\nTotal consultorios: " + total);
+        }
+        if (this.padre != null) {
             padre.actualizarTabla();
         }
         this.dispose();
@@ -323,11 +329,11 @@ public class RegistrarC extends javax.swing.JFrame {
     private void cbDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDiaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbDiaActionPerformed
-
+        // TODO add your handling code here:
     private void cbMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMedicoActionPerformed
-        
+        // TODO add your handling code here:
     }//GEN-LAST:event_cbMedicoActionPerformed
-
+        // TODO add your handling code here:
     private void cbEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEstadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbEstadoActionPerformed

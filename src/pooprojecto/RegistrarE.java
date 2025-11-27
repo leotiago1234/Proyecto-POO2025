@@ -310,15 +310,24 @@ public class RegistrarE extends javax.swing.JFrame {
         }else{
             empleado = new Empleado(nombres, apellidos, correo, dni, tel);
         }
-        
         Usuario nuevo = new Usuario(user, pass, rol, empleado);
         if(usuarioEditando == null){
-            Sistema.gestionUsuarios.AgregarUsuario(nuevo);
-            padre.actualizarTabla();
-        }else{
-            Sistema.gestionUsuarios.EditarUsuario(usuarioEditando.getUsuario(), nuevo);
+            boolean agregado = Sistema.gestionUsuarios.AgregarUsuario(nuevo);
+            if(agregado){
+                JOptionPane.showMessageDialog(this, "Usuario agregado correctamente.\nTotal usuarios: " + Sistema.gestionUsuarios.getNroUsuarios());
+            } else {
+                JOptionPane.showMessageDialog(this, "No se pudo agregar el usuario. Límite de usuarios alcanzado.");
+                return;
+            }
+        } else {
+            boolean modificado = Sistema.gestionUsuarios.EditarUsuario(usuarioEditando.getUsuario(), nuevo);
+            if(modificado){
+                JOptionPane.showMessageDialog(this, "Usuario modificado correctamente.");
+            } else {
+                JOptionPane.showMessageDialog(this, "No se pudo modificar el usuario.");
+                return;
+            }
         }
-        JOptionPane.showMessageDialog(this, "Guardado correctamente");
         if(this.padre != null){
             padre.actualizarTabla();
         }

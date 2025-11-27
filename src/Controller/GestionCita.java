@@ -5,6 +5,7 @@
 package Controller;
 
 import Model.Secundarios.Cita;
+import Model.Secundarios.Consultorio;
 import Model.Secundarios.Paciente;
 
 /**
@@ -39,9 +40,9 @@ public class GestionCita {
         return false;
     }
 
-    public boolean EliminarCita(Paciente paciente) {
+    public boolean EliminarCita(Cita cita) {
         for (int i = 0; i < count; i++) {
-            if (citas[i].getPaciente().equals(paciente)) {
+            if (citas[i] == cita) {  // Compara referencia directa
                 for (int j = i; j < count - 1; j++) {
                     citas[j] = citas[j + 1];
                 }
@@ -51,8 +52,59 @@ public class GestionCita {
             }
         }
         return false;
+    }   
+    
+        public boolean AgregarCitaConsultorio(Consultorio consultorio, Cita nuevaCita) {
+        if (consultorio == null || nuevaCita == null) {
+            return false;
+        }
+        Cita[] citas = consultorio.getCitas();
+        int n = consultorio.getCantidadCitas();
+        if (n >= citas.length) {
+            return false;
+        }
+        citas[n] = nuevaCita;
+        consultorio.setCantidadCitas(n + 1);
+
+        return true;
     }
 
+
+    public boolean EliminarCitaConsultorio(Consultorio consultorio, Cita citaEliminar) {
+        if (consultorio == null || citaEliminar == null) {
+            return false;
+        }
+        Cita[] citas = consultorio.getCitas();
+        int n = consultorio.getCantidadCitas();
+        for (int i = 0; i < n; i++) {
+            if (citas[i] == citaEliminar) {
+                citas[i] = citas[n - 1];
+                citas[n - 1] = null;
+
+                consultorio.setCantidadCitas(n - 1);
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public boolean ActualizarCitaConsultorio(Consultorio consultorio, Cita nueva) {
+        if (consultorio == null || nueva == null) {
+            return false;
+        }
+        Cita[] citas = consultorio.getCitas();
+        int n = consultorio.getCantidadCitas();
+        for (int i = 0; i < n; i++) {
+            if (citas[i] != null && citas[i].getPaciente().equals(nueva.getPaciente())) {
+                citas[i] = nueva;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    
     public Cita[] getCitas() {
         return citas;
     }

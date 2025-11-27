@@ -18,11 +18,11 @@ public class Cita {
     private String modalidad;         
     private String estado;               
 
-    public Cita(String Dia, String hora, String modalidad, String estado, Paciente paciente, Medico medico, Consultorio consultorio) {
+    public Cita(String Dia, String hora, String modalidad, Paciente paciente, Medico medico, Consultorio consultorio) {
         this.diaSemana = Dia;
         this.hora = hora;
         this.modalidad = modalidad;
-        this.estado = estado;
+        this.estado = "Programda";
         this.paciente = paciente;
         this.medico = medico;
         this.consultorio = consultorio;

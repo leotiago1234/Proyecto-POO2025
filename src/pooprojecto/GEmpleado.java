@@ -256,17 +256,14 @@ public class GEmpleado extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Seleccione un usuario");
             return;
         }
-
-        String correo = TablaU.getValueAt(fila, 3).toString();
-        Usuario[] lista = Sistema.gestionUsuarios.getUsuarios();
-        int n = Sistema.gestionUsuarios.getNroUsuarios();
-
-        for(int i = 0; i < n; i++){
-            if(lista[i].getEmpleado().getCorreo().equals(correo)){
-                Sistema.gestionUsuarios.EliminarUsuario(lista[i].getUsuario());
-                actualizarTabla();
-                return;
-            }
+        String dni = TablaU.getValueAt(fila, 3).toString();
+        boolean eliminado = Sistema.gestionUsuarios.EliminarUsuario(dni);
+        if(eliminado){
+            actualizarTabla();
+            int cantidad = Sistema.gestionUsuarios.getNroUsuarios();
+            JOptionPane.showMessageDialog(this, "Usuario eliminado correctamente.\nUsuarios restantes en el sistema: " + cantidad);
+        } else {
+            JOptionPane.showMessageDialog(this, "No se pudo eliminar el usuario. Verifique los datos.");
         }
     }//GEN-LAST:event_EliminarActionPerformed
 

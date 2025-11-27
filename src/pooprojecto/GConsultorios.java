@@ -246,20 +246,18 @@ public class GConsultorios extends javax.swing.JFrame {
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
         int fila = TablaC.getSelectedRow();
         if(fila == -1){
-            JOptionPane.showMessageDialog(this, "Seleccione un usuario");
+            JOptionPane.showMessageDialog(this, "Seleccione un consultorio");
             return;
         }
         String codigo = TablaC.getValueAt(fila, 0).toString();
-        Consultorio[] lista = Sistema.gestionConsultorio.getConsultorios();
-        int n = Sistema.gestionConsultorio.getCount();
-
-        for(int i = 0; i < n; i++){
-            if(lista[i].getCodigo().equals(codigo)){
-                Sistema.gestionConsultorio.EliminarConsultorio(lista[i].getCodigo());
-                actualizarTabla();
-                return;
-            }
+        boolean eliminado = Sistema.gestionConsultorio.EliminarConsultorio(codigo);
+        if (eliminado) {
+            int total = Sistema.gestionConsultorio.getCount();
+            JOptionPane.showMessageDialog(this,"Consultorio eliminado correctamente.\nTotal consultorios: " + total);
+        } else {
+            JOptionPane.showMessageDialog(this,"No se pudo eliminar el consultorio.");
         }
+        actualizarTabla();
     }//GEN-LAST:event_EliminarActionPerformed
 
     private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed

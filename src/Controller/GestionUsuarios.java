@@ -45,7 +45,7 @@ public class GestionUsuarios {
     
     public boolean EliminarUsuario(String DNI){
         for(int i = 0; i < nroUsuarios; i++){
-            if(usuarios[i].getUsuario().equals(DNI)){
+            if(usuarios[i].getEmpleado() != null && usuarios[i].getEmpleado().getDNI().equals(DNI)){
                 for(int j = i; j < nroUsuarios - 1; j++){
                     usuarios[j] = usuarios[j+1];
                 }
@@ -56,6 +56,7 @@ public class GestionUsuarios {
         }
         return false;
     }
+
     
     public boolean EditarUsuario(String User, Usuario nuevo){
         for(int i = 0; i < nroUsuarios; i++){

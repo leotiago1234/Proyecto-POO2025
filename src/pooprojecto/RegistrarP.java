@@ -257,19 +257,29 @@ public class RegistrarP extends javax.swing.JFrame {
         String dni = txtDNI.getText();
         String nombres = txtNombres.getText();
         String apellidos = txtApellidos.getText();
-        String sex = cbSexo.getSelectedItem().toString();
+        String sexo = cbSexo.getSelectedItem().toString();
         String nac = txtNacimiento.getText();
         String tel = txtTelefono.getText();
         String emerg = txtContactoEmerg.getText();
 
-        Paciente nuevo = new Paciente(dni, nombres, apellidos, nac, sex, tel, emerg);
+        Paciente nuevo = new Paciente(dni, nombres, apellidos, nac, sexo, tel, emerg);
         if(pacienteEditado == null){
-            Sistema.gestionPacientes.AgregarPaciente(nuevo);
-            padre.actualizarTabla();
-        }else{
-            Sistema.gestionPacientes.ActualizarPaciente(pacienteEditado.getDni(), nuevo);
+            boolean agregado = Sistema.gestionPacientes.AgregarPaciente(nuevo);
+            if(agregado){
+                JOptionPane.showMessageDialog(this, "Paciente agregado correctamente.\nTotal pacientes: " + Sistema.gestionPacientes.getCount());
+            } else {
+                JOptionPane.showMessageDialog(this, "No se pudo agregar el paciente. Límite alcanzado.");
+                return;
+            }
+        } else {
+            boolean modificado = Sistema.gestionPacientes.ActualizarPaciente(pacienteEditado.getDni(), nuevo);
+            if(modificado){
+                JOptionPane.showMessageDialog(this, "Paciente modificado correctamente.");
+            } else {
+                JOptionPane.showMessageDialog(this, "No se pudo modificar el paciente.");
+                return;
+            }
         }
-        JOptionPane.showMessageDialog(this, "Guardado correctamente");
         if(this.padre != null){
             padre.actualizarTabla();
         }

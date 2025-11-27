@@ -20,51 +20,6 @@ public class GestionConsultorio {
         count = 0;
     }
     
-    public boolean AgregarCitaConsultorio(Consultorio consultorio, Cita nuevaCita) {
-        if (consultorio == null || nuevaCita == null) {
-            return false;
-        }
-        Cita[] cistas = consultorio.getCitas();
-        int n = consultorio.getCantidadCitas();
-
-        if (n >= cistas.length) {
-            return false;
-        }
-        cistas[n] = nuevaCita;
-        consultorio.setCantidadCitas(n + 1);
-        return true;
-    }
-    
-    public boolean EliminarCitaConsultorio(Consultorio consultorio, Cita citaEliminar) {
-        if (consultorio == null || citaEliminar == null) {
-            return false;
-        }
-
-        Cita[] citas = consultorio.getCitas();
-        int nro = consultorio.getCantidadCitas();
-
-        for (int i = 0; i < nro; i++) {
-            if (citas[i] == citaEliminar) {
-                citas[i] = citas[nro - 1];
-                citas[nro - 1] = null;
-                consultorio.setCantidadCitas(nro - 1);
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    public void ActualizarCita(Consultorio consultorio, Cita citaNueva) {
-        Cita[] citas = consultorio.getCitas();
-        for (int i = 0; i < citas.length; i++) {
-            Cita c = citas[i];
-            if (c != null && c.getPaciente().equals(citaNueva.getPaciente())) {
-                citas[i] = citaNueva;
-                return;
-            }
-        }
-    }
-
     public boolean AgregarConsultorio(Consultorio c) {
         if (count < consultorios.length) {
             consultorios[count++] = c;
@@ -83,7 +38,6 @@ public class GestionConsultorio {
         }
         return false;
     }
-
 
     public boolean EliminarConsultorio(String codigo) {
         for (int i = 0; i < count; i++) {
